@@ -1,12 +1,12 @@
 # exercise 9.2.1
 
 
-from matplotlib.pyplot import figure, show
 import numpy as np
+from matplotlib.pyplot import figure, show
 from scipy.io import loadmat
+from sklearn.linear_model import LogisticRegression
 from toolbox_02450 import dbplot, dbprobplot, bootstrap
 from toolbox_02450.bin_classifier_ensemble import BinClassifierEnsemble
-from sklearn.linear_model import LogisticRegression
 
 # Load Matlab data file and extract variables of interest
 mat_data = loadmat('../Data/synth5.mat')
@@ -23,18 +23,17 @@ C = len(classNames)
 L = 100
 
 # Weights for selecting samples in each bootstrap
-weights = np.ones((N,1),dtype=float)/N
+weights = np.ones((N, 1), dtype=float) / N
 
 # Storage of trained log.reg. classifiers fitted in each bootstrap
-logits = [0]*L
+logits = [0] * L
 votes = np.zeros((N,))
 
 # For each round of bagging
 for l in range(L):
-
     # Extract training set by random sampling with replacement from X and y
     X_train, y_train = bootstrap(X, y, N, weights)
-    
+
     # Fit logistic regression model to training data and save result
     logit_classifier = LogisticRegression()
     logit_classifier.fit(X_train, y_train)
@@ -42,19 +41,21 @@ for l in range(L):
     y_est = logit_classifier.predict(X).T
     votes = votes + y_est
 
-    ErrorRate = (y!=y_est).sum(dtype=float)/N
-    print('Error rate: {:2.2f}%'.format(ErrorRate*100))    
-    
+    ErrorRate = (y != y_est).sum(dtype=float) / N
+    print('Error rate: {:2.2f}%'.format(ErrorRate * 100))
+
 # Estimated value of class labels (using 0.5 as threshold) by majority voting
-y_est_ensemble = votes>(L/2)
+y_est_ensemble = votes > (L / 2)
 
 # Compute error rate
-ErrorRate = (y!=y_est_ensemble).sum(dtype=float)/N
-print('Error rate: {:3.2f}%'.format(ErrorRate*100))
+ErrorRate = (y != y_est_ensemble).sum(dtype=float) / N
+print('Error rate: {:3.2f}%'.format(ErrorRate * 100))
 
 ce = BinClassifierEnsemble(logits)
-figure(1); dbprobplot(ce, X, y, 'auto', resolution=200)
-figure(2); dbplot(ce, X, y, 'auto', resolution=200)
+figure(1);
+dbprobplot(ce, X, y, 'auto', resolution=200)
+figure(2);
+dbplot(ce, X, y, 'auto', resolution=200)
 
 show()
 

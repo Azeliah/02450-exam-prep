@@ -1,8 +1,8 @@
 # exercise 10.1.1
 from matplotlib.pyplot import figure, show
 from scipy.io import loadmat
-from toolbox_02450 import clusterplot
 from sklearn.cluster import k_means
+from toolbox_02450 import clusterplot
 
 # Load Matlab data file and extract variables of interest
 mat_data = loadmat('../Data/synth1.mat')
@@ -17,10 +17,10 @@ C = len(classNames)
 K = 4
 
 # K-means clustering:
-centroids, cls, inertia = k_means(X,K)
-    
+centroids, cls, inertia = k_means(X, K)
+
 # Plot results:
-figure(figsize=(14,9))
+figure(figsize=(14, 9))
 clusterplot(X, cls, centroids, y)
 show()
 

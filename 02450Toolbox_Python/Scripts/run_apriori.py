@@ -1,18 +1,19 @@
-import numpy as np
-from subprocess import run
-import re
 import os
-import time
-from sys import platform
+import re
 import sys
+import time
+from subprocess import run
+from sys import platform
 
-if platform.startswith('linux'): #== "linux" or platform == "linux2":
+import numpy as np
+
+if platform.startswith('linux'):  # == "linux" or platform == "linux2":
     ext = ''  # Linux
     dir_sep = '/'
-elif platform.startswith('darwin'): #== "darwin":
+elif platform.startswith('darwin'):  # == "darwin":
     ext = 'MAC'  # OS X
     dir_sep = '/'
-elif platform.startswith('win'): #== "win32":
+elif platform.startswith('win'):  # == "win32":
     ext = '.exe'  # Windows
     dir_sep = '\\'
 else:
@@ -26,7 +27,7 @@ maxRule = 4
 # Run Apriori Algorithm
 print('Mining for frequent itemsets by the Apriori algorithm')
 status1 = run('..{0}Tools{0}apriori{1} -f"," -s{2} -v"[Sup. %S]" {3} apriori_temp1.txt'
-              .format(dir_sep, ext, minSup, filename ), shell=True)
+              .format(dir_sep, ext, minSup, filename), shell=True)
 
 if status1.returncode != 0:
     print('An error occurred while calling apriori, a likely cause is that minSup was set to high such that no '
@@ -35,7 +36,7 @@ if status1.returncode != 0:
 if minConf > 0:
     print('Mining for associations by the Apriori algorithm')
     status2 = run('..{0}Tools{0}apriori{1} -tr -f"," -o -n{2} -c{3} -s{4} -v"[Conf. %C,Sup. %S]" {5} apriori_temp2.txt'
-                  .format(dir_sep, ext, maxRule, minConf, minSup, filename ), shell=True)
+                  .format(dir_sep, ext, maxRule, minConf, minSup, filename), shell=True)
 
     if status2.returncode != 0:
         print('An error occurred while calling apriori')
@@ -83,4 +84,3 @@ print('\n')
 print('Association rules:')
 for i, item in enumerate(AssocRulesSorted):
     print('Rule: {0}'.format(item))
-

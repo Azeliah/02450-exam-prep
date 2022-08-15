@@ -1,8 +1,8 @@
 # exercise 1.5.3
-import numpy as np
 
 from scipy.io import loadmat
-# You can load the matlab data (matlab's m-file) to Python environment with 
+
+# You can load the matlab data (matlab's m-file) to Python environment with
 # 'loadmat()' function imported from 'scipy.io' module. 
 # The matlab workspace is loaded as a dictionary, with keys corresponding to 
 # matlab variable names, and values to arrays representing matlab matrices.
@@ -14,7 +14,7 @@ iris_mat = loadmat('../Data/iris.mat', squeeze_me=True)
 
 # You can check which variables are in the loaded dict by calling
 # the function keys() for the dict:
-#mat_data.keys()
+# mat_data.keys()
 # this will tell you that X, y, M, N and C are stored in the dictionary,
 # as well as some extra information about e.g. the used MATLAB version.
 

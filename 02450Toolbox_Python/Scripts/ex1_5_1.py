@@ -6,10 +6,10 @@ import pandas as pd
 filename = '../Data/iris.csv'
 df = pd.read_csv(filename)
 
-# Pandas returns a dataframe, (df) which could be used for handling the data.
+# Pandas (toolkit) returns a dataframe, (df) which could be used for handling the data.
 # We will however convert the dataframe to numpy arrays for this course as 
 # is also described in the table in the exercise
-raw_data = df.values  
+raw_data = df.values
 
 # Notice that raw_data both contains the information we want to store in an array
 # X (the sepal and petal dimensions) and the information that we wish to store 
@@ -18,23 +18,26 @@ raw_data = df.values
 # We start by making the data matrix X by indexing into data.
 # We know that the attributes are stored in the four columns from inspecting 
 # the file.
-cols = range(0, 4) 
+cols = range(0, 4)
 X = raw_data[:, cols]
-
+print(X)
 # We can extract the attribute names that came from the header of the csv
 attributeNames = np.asarray(df.columns[cols])
-
+print(attributeNames)
 # Before we can store the class index, we need to convert the strings that
 # specify the class of a given object to a numerical value. We start by 
 # extracting the strings for each sample from the raw data loaded from the csv:
-classLabels = raw_data[:,-1] # -1 takes the last column
+classLabels = raw_data[:, -1]  # -1 takes the last column
+print(classLabels)
 # Then determine which classes are in the data by finding the set of 
 # unique class labels 
 classNames = np.unique(classLabels)
+print(classNames)
 # We can assign each type of Iris class with a number by making a
 # Python dictionary as so:
-classDict = dict(zip(classNames,range(len(classNames))))
-# The function zip simply "zips" togetter the classNames with an integer,
+classDict = dict(zip(classNames, range(len(classNames))))
+print(classDict)
+# The function zip simply "zips" together the classNames with an integer,
 # like a zipper on a jacket. 
 # For instance, you could zip a list ['A', 'B', 'C'] with ['D', 'E', 'F'] to
 # get the pairs ('A','D'), ('B', 'E'), and ('C', 'F'). 
@@ -49,6 +52,7 @@ classDict = dict(zip(classNames,range(len(classNames))))
 # in the dictionary, and determine which numerical value that object is 
 # assigned. This is the class index vector y:
 y = np.array([classDict[cl] for cl in classLabels])
+print(y)
 # In the above, we have used the concept of "list comprehension", which
 # is a compact way of performing some operations on a list or array.
 # You could read the line  "For each class label (cl) in the array of 
@@ -63,8 +67,9 @@ y = np.array([classDict[cl] for cl in classLabels])
 # We can determine the number of data objects and number of attributes using 
 # the shape of X
 N, M = X.shape
+print(N, M)
 
 # Finally, the last variable that we need to have the dataset in the 
 # "standard representation" for the course, is the number of classes, C:
 C = len(classNames)
-
+print(C)

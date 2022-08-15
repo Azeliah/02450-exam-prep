@@ -19,7 +19,7 @@ dataobjectNames = [
     'Porcupine',
     'Eel',
     'Salamander',
-    ]
+]
 
 # Attribute names
 attributeNames = [
@@ -30,7 +30,7 @@ attributeNames = [
     'Aerial creature',
     'Has legs',
     'Hibernates'
-    ]
+]
 
 # Attribute values
 X = np.asarray(np.mat('''
@@ -55,7 +55,7 @@ y = np.asarray(np.mat('3 4 2 3 0 4 3 1 3 2 4 1 3 2 0').T).squeeze()
 
 # Class names
 classNames = ['Amphibian', 'Bird', 'Fish', 'Mammal', 'Reptile']
-    
+
 # Number data objects, attributes, and classes
 N, M = X.shape
 C = len(classNames)

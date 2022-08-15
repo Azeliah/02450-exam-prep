@@ -1,7 +1,8 @@
 # exercise 4.1.2
 
-from matplotlib.pyplot import (figure, title, subplot, plot, hist, show)
 import numpy as np
+from matplotlib.pyplot import (figure, title, subplot, plot, hist, show)
+
 # Number of samples
 N = 200
 
@@ -15,16 +16,16 @@ s = 2
 nbins = 20
 
 # Generate samples from the Normal distribution
-X = np.random.normal(mu,s,N).T 
+X = np.random.normal(mu, s, N).T
 # or equally:
 X = np.random.randn(N).T * s + mu
 
 # Plot the samples and histogram
 figure()
 title('Normal distribution')
-subplot(1,2,1)
-plot(X,'x')
-subplot(1,2,2)
+subplot(1, 2, 1)
+plot(X, 'x')
+subplot(1, 2, 2)
 hist(X, bins=nbins)
 
 # Compute empirical mean and standard deviation

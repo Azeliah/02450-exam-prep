@@ -6,7 +6,7 @@ from matplotlib.pyplot import boxplot, xticks, ylabel, title, show
 from ex4_2_1 import *
 
 boxplot(X)
-xticks(range(1,5),attributeNames)
+xticks(range(1, 5), attributeNames)
 ylabel('cm')
 title('Fisher\'s Iris data set - boxplot')
 show()

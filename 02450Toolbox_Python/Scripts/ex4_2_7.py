@@ -1,6 +1,6 @@
 # Exercise 4.2.7
 
-from matplotlib.pyplot import (figure, imshow, xticks, xlabel, ylabel, title, 
+from matplotlib.pyplot import (figure, imshow, xticks, xlabel, ylabel, title,
                                colorbar, cm, show)
 from scipy.stats import zscore
 
@@ -9,8 +9,8 @@ from ex4_2_1 import *
 
 X_standarized = zscore(X, ddof=1)
 
-figure(figsize=(12,6))
-imshow(X_standarized, interpolation='none', aspect=(4./N), cmap=cm.gray);
+figure(figsize=(12, 6))
+imshow(X_standarized, interpolation='none', aspect=(4. / N), cmap=cm.gray);
 xticks(range(4), attributeNames)
 xlabel('Attributes')
 ylabel('Data objects')

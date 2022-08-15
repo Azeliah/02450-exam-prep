@@ -27,4 +27,4 @@ N = len(y)
 M = len(attributeNames)
 C = len(classNames)
 
-print('Ran Exercise 2.1.1')
+print('Ran Exercise 2.1.1', N, 'x', M)

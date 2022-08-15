@@ -1,13 +1,13 @@
-## exercise 0.5.1
-import numpy as np
+# exercise 0.5.1
 import matplotlib.pyplot as plt
+import numpy as np
 
-x = np.arange(0, 1, 0.1)
-f = np.exp(x)
+x = np.arange(0, np.pi, 0.01)
+f = np.cos(x)
 
 plt.figure(1)
 plt.plot(x, f)
 plt.xlabel('x')
-plt.ylabel('f(x)=exp(x)')
-plt.title('The exponential function')
+plt.ylabel('f(x)=cos(x)')
+plt.title('The cosine function')
 plt.show()

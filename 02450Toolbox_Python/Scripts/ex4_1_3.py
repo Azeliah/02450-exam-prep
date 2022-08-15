@@ -1,7 +1,7 @@
 # exercise 4.1.3
 
-from matplotlib.pyplot import (figure, title, subplot, plot, hist, show)
 import numpy as np
+from matplotlib.pyplot import (figure, title, plot, hist, show)
 from scipy import stats
 
 # Number of samples
@@ -17,7 +17,7 @@ s = 2
 nbins = 20
 
 # Generate samples from the Normal distribution
-X = np.random.normal(mu,s,N).T 
+X = np.random.normal(mu, s, N).T
 # or equally:
 X = np.random.randn(N).T * s + mu
 
@@ -28,8 +28,8 @@ hist(X, bins=nbins, density=True)
 
 # Over the histogram, plot the theoretical probability distribution function:
 x = np.linspace(X.min(), X.max(), 1000)
-pdf = stats.norm.pdf(x,loc=17,scale=2)
-plot(x,pdf,'.',color='red')
+pdf = stats.norm.pdf(x, loc=17, scale=2)
+plot(x, pdf, '.', color='red')
 
 # Compute empirical mean and standard deviation
 mu_ = X.mean()

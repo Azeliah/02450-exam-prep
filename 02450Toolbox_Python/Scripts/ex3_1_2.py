@@ -19,11 +19,10 @@ print('Corpus (5 documents/sentences):')
 print(np.asmatrix(corpus))
 print()
 
-
 # To automatically obtain the bag of words representation, we use sklearn's
 # feature_extraction.text module, which has a function CountVectorizer.
 # We make a CounterVectorizer:
-vectorizer = CountVectorizer(token_pattern=r'\b[^\d\W]+\b')   
+vectorizer = CountVectorizer(token_pattern=r'\b[^\d\W]+\b')
 # The token pattern is a regular expression (marked by the r), which ensures 
 # that the vectorizer ignores digit/non-word tokens - in this case, it ensures 
 # the 10 in the last document is not recognized as a token. It's not important
@@ -42,9 +41,9 @@ print()
 # The next step is to count how many times each term is found in each document,
 # which we do using the transform function:
 X = vectorizer.transform(corpus)
-N,M = X.shape
+N, M = X.shape
 print('Number of documents (data objects, N):\t %i' % N)
-print('Number of terms (attributes, M):\t %i' % M )
+print('Number of terms (attributes, M):\t %i' % M)
 print()
 print('Document-term matrix:')
 print(X.toarray())

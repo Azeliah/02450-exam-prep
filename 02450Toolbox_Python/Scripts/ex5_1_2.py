@@ -1,11 +1,11 @@
 # exercise 5.1.2
-import numpy as np
-from sklearn import tree
-from platform import system
 from os import getcwd
-from toolbox_02450 import windows_graphviz_call
+from platform import system
+
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
+from sklearn import tree
+from toolbox_02450 import windows_graphviz_call
 
 # requires data from exercise 5.1.1
 from ex5_1_1 import *
